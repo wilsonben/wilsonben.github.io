@@ -147,7 +147,7 @@ $('.submit').one('click',function(){
 
 	$('<h3>It is</h3> <h1> ' + answer +'s </h1> <h3>Round</h3><input type ="button" onClick="history.go(0)" value="Another Round!" class="app-button">').fadeIn('slow').appendTo('.name span');
 
-	$( 'div.result' ).replaceWith( "'div.name'" );
+	$( '.result' ).replaceWith( '.name' );
 
 	return false;
 								
