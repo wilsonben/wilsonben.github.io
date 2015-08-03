@@ -26,8 +26,7 @@
 		<main class="app-container">
 			<div class="app-content">
 				<img src="images/teacup.svg" width="100px">
-				<h1>Who's round is it?</h1>
-				<h4 class="app-intro">Start by adding people to the round </h4>
+				
 
 			</div>
 
@@ -38,7 +37,8 @@
 
 					<div class="dynamic-form">
 					<div class="result">
-
+						<h1>Who's round is it?</h1>
+						<h4 class="app-intro">Start by adding people to the round </h4>
 						<form>
 							<div class="inputs">
 								<div><input type="text" name="dynamic[]" class="field" placeholder="Name"></div>
@@ -46,13 +46,13 @@
 						</form>
 							<a href="#" class="add"><button class="app-button desktop">Add</button></a>  
 							<a href="#" class="remove"><button class="app-button desktop">Remove </button></a>
-							<a href="#" class="reset"><button class="app-button desktop">Reset</button></a>
+							<a href="#" class="reset"><button class="app-button desktop last">Reset</button></a>
 						<div class="mobile-buttons">
 							<a href="#" class="add"><button class="app-button mobile"><i class="fa fa-plus"></i></i></button></a>  
 							<a href="#" class="remove"><button class="app-button mobile"><i class="fa fa-minus"></i></button></a>
-							<a href="#" class="reset"><button class="app-button mobile"><i class="fa fa-repeat"></i></button></a>
+							<a href="#" class="reset"><button class="app-button mobile last"><i class="fa fa-repeat"></i></button></a>
 						</div>
-							<input name="submit" type="button" class="submit" value="Submit">
+							<input name="submit" type="button" class="submit last" value="Let's find out!">
 					</div>
 					<div class="name"><span></span></div>
 
@@ -113,8 +113,19 @@
 	});
 
 	$('.field').click(function() {
-		$('.app-intro').fadeOut('fast').remove();
+		//$('.app-intro').hide('slide', function(){ $('.app-intro').remove(); });
+		$('.app-intro').animate({
+                "opacity" : "0",
+                },{
+                "complete" : function() {
+                      $('.app-intro').remove();
+                }
+       });
+
+
 	});
+
+	 
 
 	
 	// controls "reset" button function
@@ -145,9 +156,9 @@ $('.submit').one('click',function(){
 	//$('.test span').append(answer);
 
 
-	$('<h3>It is</h3> <h1> ' + answer +'s </h1> <h3>Round</h3><input type ="button" onClick="history.go(0)" value="Another Round!" class="app-button">').fadeIn('slow').appendTo('.name span');
-
-	$( '.result' ).replaceWith( '.name' );
+	$('<h3>It is</h3> <h1> ' + answer +'\'s </h1> <h3>Round</h3><input type ="button" onClick="history.go(0)" value="Another Round!" class="app-button">').fadeIn('slow').appendTo('.name span');
+	// $( 'div.result' ).replaceWith( 'div.name' );
+	$( 'div.result' ).replaceWith( $('div.name') );
 
 	return false;
 								
